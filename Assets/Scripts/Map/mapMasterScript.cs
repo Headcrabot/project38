@@ -24,11 +24,11 @@ public class mapMasterScript : MonoBehaviour
             {
                 for (int col = 0; col < map.width; col++)
                 {
-                    //Debug.Log(chr);
+                    //Debug.Log($"{map.map[row][col]} -> {(short)(map.map[row][col]-'0')}");
                     var obj = Instantiate(prefabCell, mapParent.transform);
                     obj.name = $"cell {row} {col}";
                     cellScript cell = obj.GetComponent<cellScript>();
-                    cell.Initialize(row + col, (cellType)map.map[row][col], row, col, cell.GetSize() * new Vector2(-map.width / 2, -map.height / 2));
+                    cell.Initialize(row + col, (short)(map.map[row][col]-'0'), row, col, cell.GetSize() * new Vector2(-map.width / 2, -map.height / 2));
                 }
             }
 

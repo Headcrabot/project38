@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.U2D;
 
 [RequireComponent(typeof(guiMasterScript))]
 [RequireComponent(typeof(mapMasterScript))]
@@ -17,6 +18,9 @@ public class gameMasterScript : MonoBehaviour
     public long lSeasonsLimit { get; private set; } = 60;
 
     public bool bGamePaused { get; private set; } = false;
+
+    [Header("Configuration")]
+    public resourceMasterScript resources;
 
     private void Awake()
     {
@@ -51,5 +55,9 @@ public class gameMasterScript : MonoBehaviour
     public void SetPause(bool bNPause)
     {
         bGamePaused = bNPause;
+    }
+    public Sprite GetMapSpriteById(short id)
+    {
+        return Resources.Load<Sprite>($"Sprites/Map/{resources.mapSpriteNames[id]}");
     }
 }
