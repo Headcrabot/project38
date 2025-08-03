@@ -8,10 +8,5 @@ public class resourceMasterScript : ScriptableObject
     [SerializeField] private string[] _mapSpritesNames = { "fields", "hills", "ocean", "mountains" };
 
 
-    public string[] mapSpriteNames {
-        get
-        {
-            return _mapSpritesNames;
-        }
-    }
+    public string[] mapSpriteNames {    get => _mapSpritesNames;    }
 }

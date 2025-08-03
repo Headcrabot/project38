@@ -22,17 +22,26 @@ public class gameMasterScript : MonoBehaviour
     [Header("Configuration")]
     public resourceMasterScript resources;
 
+    [Header("Players")]
+    public List<playerMasterScript> players = new List<playerMasterScript>();
+
     private void Awake()
     {
         master = this;
         gui = GetComponent<guiMasterScript>();
         map = GetComponent<mapMasterScript>();
+
+        //players = FindObjectsByType<playerMasterScript>(FindObjectsSortMode.None);
     }
 
     private void Start()
     {
         gui.Initialize();
         map.InitializeMap();
+        foreach (var player in players)
+        {
+            player.Initialize();
+        }
     }
 
     private void Update()
