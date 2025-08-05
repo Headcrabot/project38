@@ -8,6 +8,7 @@ public class mapTemplateScript : ScriptableObject
     [SerializeField] private int _width;
     [SerializeField] private int _height;
     [SerializeField] private string[] _map;
+    [SerializeField] private string[] _mapMods;
 
     public int width
     {
@@ -19,6 +20,10 @@ public class mapTemplateScript : ScriptableObject
     }
     public string[] map
     {
-        get{ return _map; }
+        get { return _map; }
+    }
+    public string[] mapMods
+    {
+        get { return _mapMods; }
     }
 }

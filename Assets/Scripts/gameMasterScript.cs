@@ -69,4 +69,11 @@ public class gameMasterScript : MonoBehaviour
     {
         return Resources.Load<Sprite>($"Sprites/Map/{resources.mapSpriteNames[id]}");
     }
+    public baseResourceScript GetResource(string rname)
+    {
+        if (Resources.Load<baseResourceScript>($"Resources/{rname}"))
+            return Resources.Load<baseResourceScript>($"Resources/{rname}");
+        Debug.Log($"ERROR: CANNOT FIND RESOURCE {rname}");
+        return null;
+    }
 }

@@ -34,6 +34,12 @@ public class selectorScript : MonoBehaviour
         Vector3 delta = (new Vector3(input.x, input.y)) * fSensetive * Time.deltaTime;
         //Debug.Log($"{delta}");
         transform.Translate(delta);
+
+        if (bSelect)
+        {
+            Collider2D[] allTouches = Physics2D.OverlapBoxAll(transform.position, transform.localScale, 0f);
+            Debug.Log(allTouches);
+        }
     }
 
     private Vector2 HandleInput(controlsLayout layout, out bool bSelect)

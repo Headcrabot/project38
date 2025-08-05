@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(selectorScript))]
 public class playerMasterScript : MonoBehaviour
 {
     [SerializeField] private selectorScript selector;
@@ -15,6 +16,8 @@ public class playerMasterScript : MonoBehaviour
         if (bInitialized)
             return;
         master = gameMasterScript.master;
+        if (!selector)
+            selector = GetComponent<selectorScript>();
         selector.Initialize();
         bInitialized = true;
     }
@@ -25,5 +28,5 @@ public class playerMasterScript : MonoBehaviour
             return;
 
         
-    }
+    }   
 }

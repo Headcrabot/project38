@@ -12,11 +12,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 975298978ac42074a8e8bc88e7821c68, type: 3}
   m_Name: devMapTemplate
   m_EditorClassIdentifier: 
-  _width: 5
-  _height: 5
+  _width: 7
+  _height: 7
   _map:
-  - 22222
-  - 20312
-  - 22112
-  - 22002
-  - 22222
+  - 2222222
+  - 2230122
+  - 2210222
+  - 2220222
+  - 2222122
+  - 2222002
+  - 2222222
+  _mapMods:
+  - '#######'
+  - '###r###'
+  - '#######'
+  - '###r###'
+  - '#######'
+  - '#######'
+  - '#######'

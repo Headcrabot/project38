@@ -10,6 +10,7 @@ public class cellScript : MonoBehaviour
     public short type { get; private set; } = 0;
 
     private SpriteRenderer render;
+    private List<GameObject> modVisuals;
 
     private bool bInitialized = false;
 
@@ -43,5 +44,13 @@ public class cellScript : MonoBehaviour
     public float GetSize()
     {
         return fCellSize;
+    }
+
+    public void AddVisualModifier(Sprite nsprite)
+    {
+        GameObject nvisual = Instantiate(new GameObject("visual"), gameObject.transform);
+        nvisual.AddComponent<SpriteRenderer>().sprite = nsprite;
+        nvisual.transform.localPosition = new Vector3(0, 0, -1);
+        //modVisuals.Add(nvisual);
     }
 }

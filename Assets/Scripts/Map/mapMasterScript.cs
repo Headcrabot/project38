@@ -8,10 +8,13 @@ public class mapMasterScript : MonoBehaviour
     [SerializeField] private mapTemplateScript map;
     [SerializeField] private GameObject mapParent;
 
+    private gameMasterScript master;
+
     private bool bInitialized = false;
 
     public bool InitializeMap()
     {
+        master = gameMasterScript.master;
         if (!map)
             return false;
         if (bInitialized)
@@ -22,13 +25,19 @@ public class mapMasterScript : MonoBehaviour
 
         for (int row = 0; row < map.height; row++)
             {
-                for (int col = 0; col < map.width; col++)
+            for (int col = 0; col < map.width; col++)
+            {
+                //Debug.Log($"{map.map[row][col]} -> {(short)(map.map[row][col]-'0')}");
+                var obj = Instantiate(prefabCell, mapParent.transform);
+                obj.name = $"cell {row} {col}";
+                cellScript cell = obj.GetComponent<cellScript>();
+                cell.Initialize(row + col, (short)(map.map[row][col] - '0'), row, col, cell.GetSize() * new Vector2(-map.width / 2, -map.height / 2));
+                switch (map.mapMods[row][col])
                 {
-                    //Debug.Log($"{map.map[row][col]} -> {(short)(map.map[row][col]-'0')}");
-                    var obj = Instantiate(prefabCell, mapParent.transform);
-                    obj.name = $"cell {row} {col}";
-                    cellScript cell = obj.GetComponent<cellScript>();
-                    cell.Initialize(row + col, (short)(map.map[row][col]-'0'), row, col, cell.GetSize() * new Vector2(-map.width / 2, -map.height / 2));
+                    case 'r':
+                        obj.AddComponent<riceFieldScript>().Initialize(master.GetResource("rice"));
+                        break;
+                }
                 }
             }
 
