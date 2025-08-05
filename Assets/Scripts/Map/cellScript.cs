@@ -13,6 +13,8 @@ public class cellScript : MonoBehaviour
 
     private bool bInitialized = false;
 
+    [SerializeField] private List<baseResourceScript> resources;
+
     public void Initialize(long nId, short ntype, int row, int col, Vector2 offset)
     {
         if (bInitialized)
